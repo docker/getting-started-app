@@ -1,5 +1,16 @@
 # Getting started
 
-This repository is a sample application for users following the getting started guide at https://docs.docker.com/get-started/.
+To create a docker image, run the following command in the root directory of the project:
+    
+    ```bash
+    docker build -t IMAGE-NAME .
+    ```
 
-The application is based on the application from the getting started tutorial at https://github.com/docker/getting-started
+To run the docker image, run the following command:
+
+    ```bash
+    docker run -p 5000:5000 IMAGE-NAME
+    ```
+
+
+# Running

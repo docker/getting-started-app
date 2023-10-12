@@ -6,7 +6,7 @@
   "scripts": {
     "prettify": "prettier -l --write \"**/*.js\"",
     "test": "jest",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon -L src/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",

@@ -11,7 +11,7 @@ values:
   gitSha: '{{ .SHA }}'
   image:
     repository: 127.0.0.1:32447/getting-started-app
-    tag: '{{ .SHA }}'
+    tag: latest
   replicas: 1
   resources:
     ignoreLimits: true

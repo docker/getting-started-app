@@ -1,0 +1,18 @@
+app: getting-started-app
+env: staging
+namespace: default
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.60.0
+values:
+  containerPort: 3000
+  gitRepository: dzsak/getting-started-app
+  gitSha: '{{ .SHA }}'
+  image:
+    dockerfile: Dockerfile
+    repository: 127.0.0.1:32447/{{ .APP }}
+    tag: latest
+  replicas: 1
+  resources:
+    ignoreLimits: true

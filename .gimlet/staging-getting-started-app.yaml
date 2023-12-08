@@ -10,9 +10,8 @@ values:
   gitRepository: dzsak/getting-started-app
   gitSha: '{{ .SHA }}'
   image:
-    dockerfile: Dockerfile
-    repository: 127.0.0.1:32447/{{ .APP }}
-    tag: latest
+    repository: nginx
+    tag: 1.19.3
   livenessProbe:
     enabled: false
     path: /

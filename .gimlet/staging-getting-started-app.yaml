@@ -1,9 +1,6 @@
-app: "{{ printf \"getting-started-app-%s\" .GITHUB_BRANCH | sanitizeDNSName }}"
+app: getting-started-app
 env: staging
 namespace: default
-deploy:
-  branch: feature/*
-  event: push
 chart:
   repository: https://chart.onechart.dev
   name: onechart

@@ -1,4 +1,4 @@
-app: getting-started-app
+app: "{{ printf \"getting-started-app-%s\" .GITHUB_BRANCH | sanitizeDNSName }}"
 env: staging
 namespace: default
 deploy:

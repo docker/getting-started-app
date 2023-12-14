@@ -15,17 +15,15 @@ pipeline {
     stage('Login Into Docker') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-    // sh 'docker login -u $USER -p $PASS' 
-}
-          
-       }
+         sh 'docker login -u $USER -p $PASS' }
+        }
+    }
     stage('Build Docker Images') {
       steps {
           sh 'docker build -t georgeebeh/getting-started:latest .'
          }
       }
-    }
-     stage('Push Images Docker to DockerHub') {
+    stage('Push Images Docker to DockerHub') {
       steps {
           sh 'docker push georgeebeh/getting-started:latest'
     }

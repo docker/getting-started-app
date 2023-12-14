@@ -1,0 +1,17 @@
+app: getting-started-app-preview
+env: staging
+namespace: default
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.60.0
+values:
+  containerPort: 80
+  gitRepository: dzsak/getting-started-app
+  gitSha: '{{ .SHA }}'
+  image:
+    repository: nginx
+    tag: 1.19.3
+  replicas: 1
+  resources:
+    ignoreLimits: true

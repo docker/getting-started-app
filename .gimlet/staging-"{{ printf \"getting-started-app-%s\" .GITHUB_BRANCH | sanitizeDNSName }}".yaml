@@ -1,0 +1,68 @@
+app: '"{{ printf \"getting-started-app-%s\" .GITHUB_BRANCH | sanitizeDNSName }}"'
+env: staging
+namespace: default
+deploy:
+  branch: feature/*
+  event: push
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.60.0
+values:
+  containerPort: 3000
+  description: ""
+  documentation: ""
+  gitRepository: dzsak/getting-started-app
+  gitSha: '{{ .SHA }}'
+  image:
+    dockerfile: Dockerfile
+    repository: 127.0.0.1:32447/{{ .APP }}
+    tag: latest
+  ingress:
+    annotations: {}
+    host: ""
+    path: /
+    tlsEnabled: false
+  issues: ""
+  livenessProbe:
+    enabled: false
+    path: /
+    settings:
+      failureThreshold: 3
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 3
+  logs: ""
+  metrics: ""
+  name: ""
+  ownerIm: ""
+  ownerName: ""
+  podAnnotations: {}
+  podDisruptionBudgetEnabled: true
+  podLabels: {}
+  probe:
+    enabled: false
+    path: /
+    settings:
+      failureThreshold: 3
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 3
+  replicas: 1
+  resources:
+    ignore: false
+    ignoreLimits: true
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 200m
+      memory: 200Mi
+  sealedSecrets: {}
+  secretEnabled: false
+  spreadAcrossNodes: true
+  traces: ""
+  vars: {}
+  volumes: []

@@ -14,7 +14,10 @@ pipeline {
     }  
     stage('Login Into Docker') {
       steps {
-          sh 'docker login --username  --password 
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+    // sh 'docker login -u $USER -p $PASS' 
+}
+          
        }
     stage('Build Docker Images') {
       steps {

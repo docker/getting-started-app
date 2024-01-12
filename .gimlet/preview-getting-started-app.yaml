@@ -12,6 +12,6 @@ values:
   image:
     repository: nginx
     tag: 1.19.3
-  replicas: 1
+  replicas: 2
   resources:
     ignoreLimits: true

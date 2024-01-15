@@ -10,7 +10,8 @@ values:
   gitRepository: dzsak/getting-started-app
   gitSha: '{{ .SHA }}'
   image:
-    repository: 127.0.0.1:32447/getting-started-app
+    dockerfile: Dockerfile
+    repository: 127.0.0.1:32447/{{ .APP }}
     tag: blabla
   replicas: 1
   resources:

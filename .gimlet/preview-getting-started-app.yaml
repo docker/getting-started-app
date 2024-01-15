@@ -10,9 +10,9 @@ values:
   gitRepository: dzsak/getting-started-app
   gitSha: '{{ .SHA }}'
   image:
-    dockerfile: Dockerfile-non-exist-path
+    dockerfile: Dockerfile
     repository: 127.0.0.1:32447/{{ .APP }}
-    tag: '{{ .SHA }}'
+    tag: bogus
   replicas: 1
   resources:
     ignoreLimits: true

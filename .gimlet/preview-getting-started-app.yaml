@@ -13,6 +13,6 @@ values:
     dockerfile: Dockerfile
     repository: 127.0.0.1:32447/{{ .APP }}
     tag: latest
-  replicas: 1
+  replicas: 2
   resources:
     ignoreLimits: true

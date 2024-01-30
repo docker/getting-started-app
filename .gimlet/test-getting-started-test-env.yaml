@@ -1,0 +1,16 @@
+app: getting-started-test-env
+env: test
+namespace: default
+chart:
+  name: https://github.com/gimlet-io/onechart.git?branch=image-pull-secrets-schema-values&sha=7b2be1dd287378ac0fb52c5f5afa0b64018cd68a&path=/charts/onechart
+values:
+  containerPort: 80
+  gitRepository: dzsak/getting-started-app
+  gitSha: '{{ .SHA }}'
+  image:
+    repository: nginx
+    tag: 1.19.3
+  imagePullSecrets: []
+  replicas: 2
+  resources:
+    ignoreLimits: true

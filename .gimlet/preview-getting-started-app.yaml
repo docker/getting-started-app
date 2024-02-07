@@ -12,7 +12,7 @@ values:
   image:
     dockerfile: Dockerfile
     repository: 127.0.0.1:32447/{{ .APP }}
-    tag: latest
+    tag: '{{ .SHA }}'
   replicas: 1
   resources:
     ignoreLimits: true

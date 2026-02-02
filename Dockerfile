@@ -1,7 +1,9 @@
-FROM node:18-alpine
+FROM node:18
 WORKDIR /app
+COPY package*.json ./
+RUN npm install uuid@8.3.2
 COPY . .
-RUN yarn install --production && yarn cache clean
-ENTRYPOINT ["node"]
-CMD ["src/index.js"]
 EXPOSE 3000
+CMD ["node","src/index.js"]
+
+

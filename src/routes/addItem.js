@@ -1,9 +1,9 @@
 const db = require('../persistence');
-const {v4 : uuid} = require('uuid');
+const crypto = require('crypto'); // Use Node's native crypto module
 
 module.exports = async (req, res) => {
     const item = {
-        id: uuid(),
+        id: crypto.randomUUID(), // Generates a standard v4 UUID
         name: req.body.name,
         completed: false,
     };

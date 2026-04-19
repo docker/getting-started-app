@@ -1,9 +1,9 @@
 const db = require('../persistence');
-const {v4 : uuid} = require('uuid');
+const { randomUUID } = require('crypto');
 
 module.exports = async (req, res) => {
     const item = {
-        id: uuid(),
+        id: randomUUID(),
         name: req.body.name,
         completed: false,
     };

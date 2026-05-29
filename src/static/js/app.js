@@ -1,13 +1,53 @@
+function Header({ darkMode, onToggle }) {
+    return (
+        <header className="app-header">
+            <span className="app-header-title">Todo App</span>
+            <div className="header-toggle-area">
+                <i className="fas fa-sun" aria-hidden="true" />
+                <label className="theme-toggle" aria-label="Toggle dark mode">
+                    <input
+                        type="checkbox"
+                        checked={darkMode}
+                        onChange={onToggle}
+                    />
+                    <span className="theme-toggle-slider" />
+                </label>
+                <i className="fas fa-moon" aria-hidden="true" />
+            </div>
+        </header>
+    );
+}
+
 function App() {
     const { Container, Row, Col } = ReactBootstrap;
+
+    const [darkMode, setDarkMode] = React.useState(
+        () => localStorage.getItem('theme') === 'dark'
+    );
+
+    React.useEffect(() => {
+        document.documentElement.dataset.theme = darkMode ? 'dark' : 'light';
+    }, [darkMode]);
+
+    const toggleTheme = React.useCallback(() => {
+        setDarkMode(prev => {
+            const next = !prev;
+            localStorage.setItem('theme', next ? 'dark' : 'light');
+            return next;
+        });
+    }, []);
+
     return (
-        <Container>
-            <Row>
-                <Col md={{ offset: 3, span: 6 }}>
-                    <TodoListCard />
-                </Col>
-            </Row>
-        </Container>
+        <React.Fragment>
+            <Header darkMode={darkMode} onToggle={toggleTheme} />
+            <Container>
+                <Row>
+                    <Col md={{ offset: 3, span: 6 }}>
+                        <TodoListCard />
+                    </Col>
+                </Row>
+            </Container>
+        </React.Fragment>
     );
 }
 
@@ -53,7 +93,7 @@ function TodoListCard() {
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
-                <p className="text-center">No items yet! Add one above!</p>
+                <p className="text-center">You have no todo items yet! Add one above!</p>
             )}
             {items.map(item => (
                 <ItemDisplay

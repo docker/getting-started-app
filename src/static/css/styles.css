@@ -1,21 +1,146 @@
-body {
-    background-color: #f4f4f4;
-    margin-top: 50px;
-    font-family: 'Lato';
+:root {
+    --bg-body: #f4f4f4;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --color-text: #111111;
+    --color-text-muted: #666666;
+    --shadow-normal: #cccccc;
+    --shadow-hover: #aaaaaa;
+    --border-focus: #333333;
+    --border-input: #ced4da;
+    --header-bg: #ffffff;
+    --header-border: #e0e0e0;
+    --toggle-track: #cccccc;
+    --toggle-thumb: #ffffff;
+    --toggle-track-active: #4a90d9;
 }
 
+[data-theme="dark"] {
+    --bg-body: #1e1e1e;
+    --bg-card: #2d2d2d;
+    --bg-input: #3d3d3d;
+    --color-text: #e2e2e2;
+    --color-text-muted: #aaaaaa;
+    --shadow-normal: rgba(0, 0, 0, 0.45);
+    --shadow-hover: rgba(0, 0, 0, 0.65);
+    --border-focus: #aaaaaa;
+    --border-input: #555555;
+    --header-bg: #2d2d2d;
+    --header-border: #444444;
+    --toggle-track: #555555;
+    --toggle-thumb: #e2e2e2;
+    --toggle-track-active: #4a90d9;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--color-text);
+    margin-top: 0;
+    padding-top: 76px;
+    font-family: 'Lato';
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Header */
+
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 1px 4px var(--shadow-normal);
+}
+
+.app-header-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.5px;
+}
+
+.header-toggle-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Toggle switch */
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background-color: var(--toggle-track);
+    border-radius: 24px;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--toggle-thumb);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle input:checked + .theme-toggle-slider {
+    background-color: var(--toggle-track-active);
+}
+
+.theme-toggle input:checked + .theme-toggle-slider::before {
+    transform: translateX(22px);
+}
+
+.theme-toggle input:focus + .theme-toggle-slider {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+}
+
+/* Todo items */
+
 .item {
-    background-color: white;
+    background-color: var(--bg-card);
+    color: var(--color-text);
     padding: 15px;
     margin-bottom: 15px;
     border: transparent;
     border-radius: 5px;
-    box-shadow: 0 0 1em #ccc;
+    box-shadow: 0 0 1em var(--shadow-normal);
     transition: all .2s ease-in-out;
 }
 
 .item:hover {
-    box-shadow: 0 0 1em #aaa;
+    box-shadow: 0 0 1em var(--shadow-hover);
 }
 
 .item.completed {
@@ -23,7 +148,7 @@ body {
 }
 
 .toggles {
-    color: black;
+    color: var(--color-text);
 }
 
 .name {
@@ -35,5 +160,24 @@ body {
 }
 
 button:focus {
-    border: 1px solid #333;
+    border: 1px solid var(--border-focus);
+}
+
+/* Bootstrap form-control dark mode overrides */
+
+[data-theme="dark"] .form-control {
+    background-color: var(--bg-input);
+    border-color: var(--border-input);
+    color: var(--color-text);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: var(--bg-input);
+    border-color: var(--border-focus);
+    color: var(--color-text);
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 217, 0.25);
 }

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "dev": "nodemon -L src/index.js"
-  },
+"scripts": {
+    "dev": "nodemon -L src/index.js",
+    "test": "jest"
+},
   "dependencies": {
     "express": "^5.2.1",
     "mysql2": "^3.16.1",
@@ -14,6 +15,7 @@
     "wait-port": "^1.1.0"
   },
   "devDependencies": {
+    "jest": "^30.5.2",
     "nodemon": "^3.1.9"
   },
   "overrides": {
